@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar Usuario</title>
+  <link rel="stylesheet" href="/static/css/edit.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Editar Usuario</h1>
+    <form action="/update/{{contact.0}}" method="POST">
+      <div class="form-group">
+        <label for="nombre_usuario">Nombre:</label>
+        <input type="text" id="nombre_usuario" name="nombre_usuario" value="{{contact.1}}">
+      </div>
+      <div class="form-group">
+        <label for="apellido_usuario">Apellido:</label>
+        <input type="text" id="apellido_usuario" name="apellido_usuario" value="{{contact.2}}">
+      </div>
+      <div class="form-group">
+        <label for="email_usuario">Email:</label>
+        <input type="text" id="email_usuario" name="email_usuario" value="{{contact.3}}">
+      </div>
+      <div class="form-group">
+        <label for="direccion_usuario">Dirección:</label>
+        <input type="text" id="direccion_usuario" name="direccion_usuario" value="{{contact.4}}">
+      </div>
+      <div class="form-group">
+        <label for="telefono_usuario">Teléfono:</label>
+        <input type="text" id="telefono_usuario" name="telefono_usuario" value="{{contact.5}}">
+      </div>
+      <div class="form-group">
+        <label for="usuario_usuario">Usuario:</label>
+        <input type="text" id="usuario_usuario" name="usuario_usuario" value="{{contact.6}}">
+      </div>
+      <div class="form-group">
+        <label for="contrasena_usuario">Contraseña:</label>
+        <input type="text" id="contrasena_usuario" name="contrasena_usuario" value="{{contact.7}}">
+      </div>
+      <button type="submit">Guardar</button>
+    </form>
+  </div>
+</body>
+</html

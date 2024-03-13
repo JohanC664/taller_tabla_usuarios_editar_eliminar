@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="{{url_for('static', filename='css/index.css')}}">
+</head>
+<body>
+  
+
+    
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages  %}
+        <p>{{message}}</p>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <form action="/add_usuario" method="POST">
+
+        <input type="text" name="nombre_usuario" placeholder="nombre usuario">
+        <input type="text" name="apellido_usuario" placeholder="apellido usuario">
+        <input type="text" name="email_usuario" placeholder="email usuario">
+        <input type="text" name="direccion_usuario" placeholder="direccion usuario">
+        <input type="text" name="telefono_usuario" placeholder="telefono usuario">
+        <input type="text" name="usuario_usuario" placeholder="usuario usuario">
+        <input type="text" name="contrasena_usuario" placeholder="contrasena usuario">
+        <button type="submit"> Save </button>
+    </form>
+
+    <table>
+      <thead>
+        <tr>
+            <td>nombre_usuario</td>
+            <td>apellido_usuario</td>
+            <td>email_usuario</td>
+            <td>direccion_usuario</td>
+            <td>telefono_usuario</td>
+            <td>usuario_usuario</td>
+            <td>contrasena_usuario</td>
+            <td>operations</td>
+        </tr>
+      </thead>  
+      <tbody>
+        {% for usuario in usuarioos %}
+        <tr>
+            <td>{{usuario.1}}</td>
+            <td>{{usuario.2}}</td>
+            <td>{{usuario.3}}</td>
+            <td>{{usuario.4}}</td>
+            <td>{{usuario.5}}</td>
+            <td>{{usuario.6}}</td>
+            <td>{{usuario.7}}</td>
+            <td> <a href="/edit/{{usuario.0}}">Edit</a></td>
+            <td> <a href="/delete/{{usuario.0}}">Delete</a></td>
+        </tr>
+        {%endfor%}
+      </tbody>
+    </table>
+  </body>
+</html>
