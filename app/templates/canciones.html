@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+</head>
+<body>
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+  {% for message in messages %}
+  <p>{{ message }}</p>
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
+  <form action="/add_cancion" method="POST" enctype="multipart/form-data">
+    <input type="text" name="nombre_cancion" placeholder="nombre cancion">
+    <input type="text" name="nombre_artista" placeholder="nombre artista">
+    <input type="text" name="genero_cancion" placeholder="genero cancion">
+    <input type="text" name="precio_cancion" placeholder="precio cancion">
+    <input type="text" name="duracion_cancion" placeholder="duracion cancion">
+    <input type="text" name="año_lanzamiento_cancion" placeholder="año lanzamiento cancion">
+    <input type="file" name="imagen_cancion" placeholder="imagen cancion">
+    <button type="submit">Save</button>
+  </form>
+  <table>
+    <thead>
+      <tr>
+        <td>nombre_canciones</td>
+        <td>nombre_artista</td>
+        <td>genero_cancion</td>
+        <td>precio_cancion</td>
+        <td>duracion_cancion</td>
+        <td>año_lanzamiento_cancion</td>
+        <td>img_cancion</td>
+        <td>operations</td>
+      </tr>
+    </thead>
+    <tbody>
+      {% for cancion in canciones %}
+      <tr>
+        <td>{{ cancion.1 }}</td>
+        <td>{{ cancion.2 }}</td>
+        <td>{{ cancion.3 }}</td>
+        <td>{{ cancion.4 }}</td>
+        <td>{{ cancion.5 }}</td>
+        <td>{{ cancion.6 }}</td>
+        <td>{{ cancion.7 }}</td>
+        <td><a href="/edit/{{ cancion.0 }}">Edit</a></td>
+        <td><a href="/delete/{{ cancion.0 }}">Delete</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</body>
+</html>

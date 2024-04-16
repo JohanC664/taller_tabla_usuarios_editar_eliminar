@@ -17,7 +17,8 @@
     {% endfor %}
     {% endif %}
     {% endwith %}
-    <form action="/add_usuario" method="POST">
+
+    <form action="/add_usuario" method="POST" enctype="multipart/form-data">
 
         <input type="text" name="nombre_usuario" placeholder="nombre usuario">
         <input type="text" name="apellido_usuario" placeholder="apellido usuario">
@@ -26,6 +27,19 @@
         <input type="text" name="telefono_usuario" placeholder="telefono usuario">
         <input type="text" name="usuario_usuario" placeholder="usuario usuario">
         <input type="text" name="contrasena_usuario" placeholder="contrasena usuario">
+        <input type="file" name="imagen_usuario" placeholder="imagen usuario">
+
+
+
+        <div class="datos">
+          <label for="rol">Asignacion de roles</label>
+          <select name="txtrol" id="rol" type="text">
+              <option value="Administrador">Administrador</option>
+              <option value="Comprador">Comprador</option>
+          </select>
+      </div>
+
+
         <button type="submit"> Save </button>
     </form>
 
@@ -39,6 +53,7 @@
             <td>telefono_usuario</td>
             <td>usuario_usuario</td>
             <td>contrasena_usuario</td>
+            <td>rol</td>
             <td>operations</td>
         </tr>
       </thead>  
@@ -52,8 +67,10 @@
             <td>{{usuario.5}}</td>
             <td>{{usuario.6}}</td>
             <td>{{usuario.7}}</td>
+            <td>{{usuario.8}}</td>
+          
             <td> <a href="/edit/{{usuario.0}}">Edit</a></td>
-            <td> <a href="/delete/{{usuario.0}}">Delete</a></td>
+            <td> <a href="{{ url_for('delete_usuario', id=usuario[0]) }}">Delete</a></td>
         </tr>
         {%endfor%}
       </tbody>
